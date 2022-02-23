@@ -1,0 +1,263 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "country": "UK",
+            "job_title": "Program Manager",
+            "min_salary": 57623.78, 
+            "max_salary": 57623.78,
+            "description":  "This role requires an individual with excellent analytical abilities, outstanding business acumen, expert in partnering and earning trust with different stakeholders. Should have relentless customer advocacy, obsession, strategic along with robust interpersonal and influencing skills, and an ability to gather business requirements across Global teams to help build metrices.",
+            "company_name":  "Amazon"
+        },
+        {
+            "id": 2,
+            "country": "UK",
+            "job_title": "Senior HR Business Partner",
+            "min_salary": 58470.38,
+            "max_salary": 65065.49,
+            "description": "The Senior HR Business Partner will be an advisor to senior Operations leaders, utilizing their strong HR experience and expertise.",
+            "company_name": "Amazon"
+        },
+        {
+            "id": 3,
+            "country": "UK",
+            "job_title": "Maintenance Technician",
+            "min_salary": 34456.76,
+            "max_salary": 62632.27,
+            "description": "Maintain Web Development at effiecient level for Company",
+            "company_name": "Amazon"
+        },
+        {
+            "id": 4,
+            "country": "UK",
+            "job_title": "Driving Instructor Trainee",
+            "min_salary": 20492.72,
+            "max_salary": 25492.71,
+            "description": "Train and Assist people before there driving test",
+            "company_name": "My Four Wheels"
+        },
+        {
+            "id": 5,
+            "country": "UK",
+            "job_title": "Software Development Engineer",
+            "min_salary": 50000,
+            "max_salary": 57000,
+            "description": "Simulation and Experimentation (SimEx) team is looking for an experienced and passionate Software Development Engineer (SDE) to join our fast-paced stimulating environment, to help invent the future of retail with technology. ",
+            "company_name": "Amazon"
+        },
+        {
+            "id": 6,
+            "country": "UK",
+            "job_title": "Software Engineer",
+            "min_salary": 70000,
+            "max_salary": 80000,
+            "description": "Implement front-end styling to companies web app",
+            "company_name": "Ncounter"
+        },
+        {
+            "id": 7,
+            "country": "UK",
+            "job_title": "Mobile Software Engineer",
+            "min_salary": 54000,
+            "max_salary": 54110,
+            "description": "As a Mobile Software Engineer in Test should have experience in automated software testing in an agile and DevOps culture, with deep knowledge of the STLC and a real passion for quality and strong experience with tools such as Robot, Selenium, Post Man, Cypress or Puppeteer.",
+            "company_name": "Jaguar"
+        },
+        {
+            "id": 8,
+            "country":  "UK",
+            "job_title": "Senior C++ Software Engineer",
+            "min_salary": 100000,
+            "max_salary": 110000,
+            "description": "The Senior C++ Developer will work on the clients core trading engine as part of their core low-latency market data engineering team.",
+            "company_name": "Miller Maxwell Ltd"
+        },
+        {
+            "id": 9,
+            "country": "UK",
+            "job_title": "Software Engineer",
+            "min_salary": 50000,
+            "max_salary": 52000,
+            "description": "role includes analyzing and modifying existing software as well as designing, constructing and testing end-user applications that meet user needs — all through software programming languages.",
+            "company_name": "Rise Technical Recruitment Ltd"
+        },
+        {
+            "id": 10,
+            "country": "UK",
+            "job_title": "Embedded Software Engineer",
+            "min_salary": 50000,
+            "max_salary": 65000,
+            "description": "We are looking for a professional Embedded Software Engineer to execute complete embedded software development lifecycle. The goal is to create scalable and optimized software systems.",
+            "company_name": "Computer Futures"
+        },
+        {
+            "id": 11,
+            "country": "CA",
+            "job_title": "Director of Software Engineering",
+            "min_salary": 288000,
+            "max_salary": 384000,
+            "description": "Software Engineering Director directs and oversees the software engineering function in developing, releasing, and maintaining software applications/operating systems according to business needs. Establishes policies and procedures that produce high-quality software product and service.",
+            "company_name": "Techouver"
+
+        },
+        {
+            "id": 12,
+            "country": "CA",
+            "job_title": "Lead Software Engineer",
+            "min_salary": 240000,
+            "max_salary": 288000,
+            "description": "Prenuvo is a fast growing health tech company specializing in whole body diagnostic imaging. At Prenuvo, we believe that everyone should have the insights and information they need to make informed decisions about their health. Our goal is to help people live happier, healthier, and longer lives through early detection and unparalleled clarity into their health.",
+            "company_name": "Prenuvo"
+        },
+        {
+            "id": 13,
+            "country": "CA",
+            "job_title": "Principal Software Engineer",
+            "min_salary": 240000,
+            "max_salary": 384000,
+            "description": "The Senior Principal Software Engineer will use modern tools, techniques, and methods to design and develop new applications, components and services built on our next generation cloud-native commerce platform.",
+            "company_name": "PartnerStack"
+
+        },
+        {
+            "id": 14,
+            "country": "CA",
+            "job_title": "Principal Software Engineer",
+            "min_salary": 288000,
+            "max_salary": 288000,
+            "description": "Aptos is 100% focused on shaping and enabling the future of retailing while helping to build great futures for our colleagues. We are a company that has developed through retail, understands where retailers and their customers are today, and knows exactly where they are heading. Check out a global list of our open positions below. If this sounds like your kind of opportunity, and if you have what it takes to excel with the industry best, we invite you to join the ride.",
+            "company_name": "Apto"
+        },
+        {
+            "id": 15,
+            "country": "CA",
+            "job_title": "Software Engineering Manager",
+            "min_salary": 240000,
+            "max_salary": 288000,
+            "description": "A software engineering manager is an experienced software engineer who helps supervise the design and development of software projects. This role is also referred to as an engineering manager, and many engineering departments employ several of these individuals to keep multiple projects running smoothly",
+            "company_name": "Kijiji"
+        },
+        {
+            "id": 16,
+            "country": "CA",
+            "job_title": "Software Engineering Manager",
+            "min_salary": 100000,
+            "max_salary": 115000,
+            "description": "Are you a Software Engineering Manager who is looking to work on modern, sophisticated applications, using leading edge technologies? Our Client is the leader in their industry providing solutions for the global financial sector. We love this company because they have been recognized with numerous awards, is rapidly growing, and is located in a beautiful office in Gastown. Our client has asked for our help in looking for a Software Engineering Manager for a permanent position.",
+            "company_name": "SIGnature Recruiting Inc."
+        },
+        {
+            "id": 17,
+            "country": "CA",
+            "job_title": "Director, Software Engineering",
+            "min_salary": 288000,
+            "max_salary": 384000,
+            "description": "Software Engineering Director directs and oversees the software engineering function in developing, releasing and maintaing software applications/operating systems according to business needs",
+            "company_name": "Gemstone Logisitics Inc"
+        },
+        {
+           "id": 18,
+           "country": "US",
+           "job_title": "Senior Dev Software Engineer",
+           "min_salary": 140000,
+           "max_salary": 180000,
+           "description": "Senior software developers are responsible for designing, testing, and implementing new and updated software programs. They take on a managerial role and lead the development team with all software development tasks.",
+           "company_name": "CyberCoders"
+
+        },
+        {
+            "id": 19,
+            "country": "US",
+            "job_title": "Embedded Software Engineer",
+            "min_salary": 80000,
+            "max_salary": 150000,
+            "description": "Designing and implementing software of embedded devices and systems Designing, developing, coding, testing and debugging system software Analyzing and enhancing efficiency, stability and scalability of system resources",
+            "company_name": "CyberCoders"
+        },
+        {
+            "id": 20,
+            "country": "US",
+            "job_title": "Junior Software Engineer",
+            "min_salary": 45000,
+            "max_salary": 55000,
+            "description": "Junior Software Developers are entry-level software developers that assist the development team with all aspects of software design and coding.",
+            "company_name": "Kakoda"
+        },
+        {
+            "id": 21,
+            "country": "US",
+            "job_title": "Senior Project Manager",
+            "min_salary": 180000,
+            "max_salary": 250000,
+            "description": "responsible for overseeing the planning and implementation of an entire project through budget, hiring team members, hiring team member, sourcing suppliers andd planning the project releases",
+            "company_name": "CyberCoders"
+        },
+        {
+            "id": 22,
+            "country": "US",
+            "job_title": " (Senior) Software Engineer - REMOTE",
+            "min_salary": 100000,
+            "max_salary": 185000,
+            "description": "Do you want to make work easier for millions of people? Play a key role on a fast-paced, high-performance engineering team in a growing, VC-backed startup? Contribute to product decisions, company culture, and have impact on real users? Ship to production over 150 times a month? Work with new technologies and functional programming?",
+            "company_name": "Troops"
+        },
+        {
+            "id": 23,
+            "country": "US",
+            "job_title": "Software Development Engineer II",
+            "min_salary": 120000,
+            "max_salary": 170000,
+            "description": "Amazon is building a world class advertising business and we are responsible for defining and delivering a collection of self-service performance advertising products that drive discovery and sales. Our products are strategically important to our Retail and Marketplace businesses driving long term growth. We deliver billions of ad impressions and millions of clicks daily and are breaking fresh ground to create world-class products. We are highly motivated, collaborative and fun-loving",
+            "company_name": "Amazon Advertising"
+        },
+        {
+            "id": 24,
+            "country": "US",
+            "job_title": "Software Developer",
+            "min_salary": 75000,
+            "max_salary": 94000,
+            "description": "Designing algorithms and flowcharts to create new software programs and systems. Producing efficient and elegant code based on requirements.",
+            "company_name": "ISYS Technologies"
+        },
+        {
+            "id": 25,
+            "country": "US",
+            "job_title": "Software Developer",
+            "min_salary": 100000,
+            "max_salary": 130000,
+            "description":  "Develop custom software interfaces using a combination of Java and Groovy by working within a client-focused team. This role is primarily responsible for designing, developing and testing interfaces for our enterprise case management product",
+            "company_name": "Journal Technologies, Inc."
+        },
+        {
+            "id": 26,
+            "country": "US",
+            "job_title": "Software Developer",
+            "min_salary": 80000,
+            "max_salary": 120000,
+            "description": "Designing algorithms and flowcharts to create new software programs and systems. Producing efficient and elegant code based on requirements.",
+            "company_name": "Drolt Financial Technologies"
+        },
+        {
+            "id": 27,
+            "country": "US",
+            "job_title": "Software Development Engineer II",
+            "min_salary": 120000,
+            "max_salary": 170000,
+            "description": "Software Engineer II designs and develops software applications.Performs coding, debugging, testing, and troubleshooting throughout the application development process",
+            "company_name": "Amazon Advertising"
+        },
+        {
+            "id": 28,
+            "country": "US",
+            "job_title": "Software Developer",
+            "min_salary": 180000,
+            "max_salary": 200000,
+            "description": "Developers work with teams of coders to create software programs for computers, mobile devices and websites. They update end-user software and conduct quality control functions.",
+            "company_name": "Everwatch"
+        }
+        
+
+
+    ]
+}
+
