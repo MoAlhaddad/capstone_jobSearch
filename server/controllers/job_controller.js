@@ -1,6 +1,7 @@
 module.exports = {
   getJobs: (req, res) => {
     const dbInstance = req.app.get("db");
+    console.log(dbInstance);
     return dbInstance
       .get_all_jobs()
       .then((jobs) => {
@@ -67,7 +68,7 @@ module.exports = {
       .catch((err) => console.log(err));
   },
 
- deleteJob: (req, res) => {
+  deleteJob: (req, res) => {
     const dbInstance = req.app.get("db");
     const { id } = req.params;
 
