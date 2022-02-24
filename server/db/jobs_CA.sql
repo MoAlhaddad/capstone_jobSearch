@@ -115,7 +115,7 @@ values (
 
 
 INSERT into Job(
-      id,
+      
       country, -- country of company
       job_title, -- Job title
       min_salary, -- Min Salary
