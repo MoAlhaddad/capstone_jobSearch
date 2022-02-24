@@ -1,2 +1,2 @@
 
-Select * from Jobs
+Select * from Job;

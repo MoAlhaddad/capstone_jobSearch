@@ -33,57 +33,57 @@ const SERVER_PORT = 4500,
   DB_USER = "gphsaewxfvokje",
   DB_PORT = "5432";
 
-app.use((req, res, next) => {
-  const requestURL = url.parse(req.url);
-  //{search: 'php', location: 'london'}
-  const decodedParams = decodeParams(new URLSearchParams(requestURL.search));
-  const { search, location, country = "gb" } = decodedParams;
+//app.use((req, res, next) => {
+// const requestURL = url.parse(req.url);
+//{search: 'php', location: 'london'}
+//const decodedParams = decodeParams(new URLSearchParams(requestURL.search));
+//const { search, location, country = "gb" } = decodedParams;
 
-  // app.use(
-  //  "/api",
-  //  createProxyMiddleware({
-  //   target: "http://localhost:3000/",
-  //   changeOrigin: true,
-  // })
-  //);
+// app.use(
+//   "/api",
+//   createProxyMiddleware({
+//     target: "http://localhost:3000/",
+//     changeOrigin: true,
+//   })
+// );
 
-  // console.log(CONNECTION_STRING);
+// console.log(CONNECTION_STRING);
 
-  massive({
-    host: DB_HOST,
-    port: DB_PORT,
-    database: DB_DATABASE,
-    user: DB_USER,
-    password: DB_PASSWORD,
-    ssl: { rejectUnauthorized: false },
+massive({
+  host: DB_HOST,
+  port: DB_PORT,
+  database: DB_DATABASE,
+  user: DB_USER,
+  password: DB_PASSWORD,
+  ssl: { rejectUnauthorized: false },
+})
+  .then((database) => {
+    app.set("db", database);
   })
-    .then((database) => {
-      app.set("db", database);
-    })
-    .catch((err) => console.log("Massive Connection Error---------", err));
+  .catch((err) => console.log("Massive Connection Error---------", err));
 
-  const targetURL = `${config.BASE_URL}/${country.toLowerCase()}/${
-    config.BASE_PARAMS
-  }&app_id=${config.APP_ID}&app_key=${
-    config.APP_KEY
-  }&what=${search}&where=${location}`;
+//   const targetURL = `${config.BASE_URL}/${country.toLowerCase()}/${
+//     config.BASE_PARAMS
+//   }&app_id=${config.APP_ID}&app_key=${
+//     config.APP_KEY
+//   }&what=${search}&where=${location}`;
 
-  if (req.method === "GET") {
-    console.log(`Proxy GET request to : ${targetURL}`);
-    axios
-      .get(targetURL)
-      .then((response) => {
-        res.writeHead(200, headers);
-        res.end(JSON.stringify(response.data));
-      })
-      .catch((error) => {
-        utils.errorMessage(error);
-        res.writeHead(500, headers);
-        res.end(JSON.stringify(error));
-      });
-  }
-  next();
-});
+//   if (req.method === "GET") {
+//     console.log(`Proxy GET request to : ${targetURL}`);
+//     axios
+//       .get(targetURL)
+//       .then((response) => {
+//         res.writeHead(200, headers);
+//         res.end(JSON.stringify(response.data));
+//       })
+//       .catch((error) => {
+//         utils.errorMessage(error);
+//         res.writeHead(500, headers);
+//         res.end(JSON.stringify(error));
+//       });
+//   }
+//   next();
+// });
 
 app.get("/api/getJobs", job_controller.getJobs);
 

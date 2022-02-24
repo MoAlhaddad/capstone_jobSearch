@@ -1,4 +1,4 @@
-require(dotenv).config();
+require("dotenv").config();
 
 module.exports = {
   APP_ID: process.env.APP_ID,

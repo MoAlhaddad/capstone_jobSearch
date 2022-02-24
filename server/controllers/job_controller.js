@@ -1,7 +1,6 @@
 module.exports = {
   getJobs: (req, res) => {
     const dbInstance = req.app.get("db");
-    console.log(dbInstance);
     return dbInstance
       .get_all_jobs()
       .then((jobs) => {
