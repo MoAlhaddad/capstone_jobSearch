@@ -62,28 +62,22 @@ massive({
   })
   .catch((err) => console.log("Massive Connection Error---------", err));
 
-//   const targetURL = `${config.BASE_URL}/${country.toLowerCase()}/${
-//     config.BASE_PARAMS
-//   }&app_id=${config.APP_ID}&app_key=${
-//     config.APP_KEY
-//   }&what=${search}&where=${location}`;
+const targetURL = `https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=d4ab5126&app_key=299c01e42f474c75c83b393845adb756`;
 
-//   if (req.method === "GET") {
-//     console.log(`Proxy GET request to : ${targetURL}`);
-//     axios
-//       .get(targetURL)
-//       .then((response) => {
-//         res.writeHead(200, headers);
-//         res.end(JSON.stringify(response.data));
-//       })
-//       .catch((error) => {
-//         utils.errorMessage(error);
-//         res.writeHead(500, headers);
-//         res.end(JSON.stringify(error));
-//       });
-//   }
-//   next();
-// });
+{
+  console.log(`Proxy GET request to : ${targetURL}`);
+  axios
+    .get(
+      `https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=d4ab5126&app_key=299c01e42f474c75c83b393845adb756`
+    )
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      utils.errorMessage(error);
+    });
+}
+
 
 app.get("/api/getJobs", job_controller.getJobs);
 

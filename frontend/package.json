@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node ./node_modules/parcel/bin/cli index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
