@@ -8,6 +8,7 @@ const config = require("./config");
 const { appendFile } = require("fs");
 const job_controller = require("./controllers/job_controller");
 
+
 const headers = {
   "Content-type": "application/json",
   "Access-Control-Allow-Origin": "*",
@@ -20,6 +21,8 @@ const decodeParams = (searchParams) =>
     (acc, key) => ({ ...acc, [key]: searchParams.get(key) }),
     {}
   );
+
+
 
 app.use(express.static(`${__dirname}/../build`));
 app.use(express.urlencoded());

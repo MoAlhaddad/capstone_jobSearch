@@ -1,5 +1,5 @@
-import axios from "axios";
-import config from "config.js";
+const config = require("/..config");
+const axios = require("axios");
 
 module.exports = {
   getJobs: (req, res) => {
