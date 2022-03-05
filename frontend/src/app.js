@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import "./App.css";
+import  Axios  from "axios";
 import { Button, Container, Navbar, Nav } from "react-bootstrap";
 import JobApi from "./api/jobapi";
 import { BrowserRouter } from "react-router-dom";
@@ -6,8 +8,102 @@ import useLocalStorage from "./hooks/useLocalStorage";
 import Navigation from "./routes-nav/Navigation";
 import Routes from "./routes-nav/Routes";
 import jwt from "jsonwebtoken";
-export const TOKEN_STORAGE_ID = "job-token";
+import { response } from "../../server/app";
+
 function App() {
+  const [usernameReg, setUsernameReg] = useState("");
+  const [passwordReg, setPasswordReg] = useState("");
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [loginStatus, setLoginStatus] = useState(false);
+
+  Axios.defaults.withCredentials = true;
+
+  const register = () => {
+    Axios.post("http://localhost:3001/register", {
+      username: usernameReg,
+      password: passwordReg,
+    }).then((response) => {
+      console.log(response);
+    });
+  };
+
+  const login = () => {
+    Axios.post("http://localhost:3001/login", {
+      username: username,
+      password: password
+    }).then((response) => {
+      if (!response.data.auth) {
+        setLoginStatus(false);
+      } else {
+        console.log(response.data);
+        localStorage.setItem("token", "Bearer " + response.data.token)
+        setLoginStatus(true);
+      }
+    });
+  };
+
+  const userAuthenticated = () => {
+    Axios.get("http://localhost:3001/isUserAuth", {
+      headers: {
+        "x-access-token": localStorage.getItem("token"),
+      },
+    }).then((response) => {
+      console.log(response);
+    });
+  };
+}
+
+  return (
+    <div className="App">
+      <div className="registration">
+        <h1>Registration</h1>
+        <label>Username</label>
+        <input
+          type="text"
+          onChange={(e) => {
+            setUsernameReg(e.target.value);
+          }}
+          />
+          <label>Password</label>
+          <input
+            type="text"
+            onChange={(e) => {
+              setPasswordReg(e.target.value);
+            }}
+            />
+            <button onClick={register}>Register</button>
+            </div>
+
+            <div className="Login">
+              <h1>Login</h1>
+              <input
+                type="text"
+                placeholder="Username..."
+                onChange={(e) =>{
+                  setUsername(e.target.value);
+                }}
+                />
+              <input 
+                type="password"
+                placeholder="Password..."
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+                />
+                <button onClick={login}> login </button>
+              </div>
+
+            {loginStatus && (
+              <button onClick={userAuthenticated}>Check if Authenticated</button>
+            )}
+          </div>
+  ); 
+  
+
+
   const [infoLoaded, setInfoLoaded] = useState(false);
   const [applicationIds, setApplicationIds] = useState(new Set([]));
   const [currentUser, setCurrentUser] = useState(null);
@@ -112,7 +208,7 @@ function App() {
 
       </BrowserRouter>
   );
-}
+  
 
 
     // const jobSearch = new JobSearch('#search-form', '.result-container', '.loading-element');
