@@ -1,86 +1,55 @@
 import React, { useState, useEffect } from "react";
+import { Button, Container, Navbar, Nav } from "react-bootstrap";
+import JobApi from "./api/jobapi";
 import { BrowserRouter } from "react-router-dom";
 import useLocalStorage from "./hooks/useLocalStorage";
 import Navigation from "./routes-nav/Navigation";
 import Routes from "./routes-nav/Routes";
-import LoadingSpinner from "./common/LoadingSpinner";
-import JobApi from "./api/jobapi";
-import UserContext from "./auth/UserContext";
 import jwt from "jsonwebtoken";
-import { JobSearch } from "./JobSearch";
-import axios from "axios";
-
-const jobSearch = new JobSearch(
-  "#search-form",
-  ".result-container",
-  ".loading-element"
-);
-jobSearch.setCountryCode();
-jobSearch.configureFormListener();
-
-// Key name for storing token in localStorage for "remember me" re-login
 export const TOKEN_STORAGE_ID = "job-token";
-
 function App() {
   const [infoLoaded, setInfoLoaded] = useState(false);
   const [applicationIds, setApplicationIds] = useState(new Set([]));
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
 
-  createJob = async (id) => {
-    let res = await api.post("/", { title: "TestJob", id: 4, company: "test" });
-    console.log(res);
-    this.getJobs();
-  };
-
-  deleteJob = async (id, val) => {
-    let data = await api.patch("/${id}", { title: val });
-    this.getJobs();
-  };
-
   console.debug(
-    "App",
-    "infoLoaded=",
-    infoLoaded,
-    "currentUser=",
-    currentUser,
-    "token=",
-    token
+      "App",
+      "infoLoaded=", infoLoaded,
+      "currentUser=", currentUser,
+      "token=", token,
   );
 
   // Load user info from API. Until a user is logged in and they have a token,
   // this should not run. It only needs to re-run when a user logs out, so
   // the value of the token is a dependency for this effect.
 
-  useEffect(
-    function loadUserInfo() {
-      console.debug("App useEffect loadUserInfo", "token=", token);
+  useEffect(function loadUserInfo() {
+    console.debug("App useEffect loadUserInfo", "token=", token);
 
-      async function getCurrentUser() {
-        if (token) {
-          try {
-            let { username } = jwt.decode(token);
-            // put the token on the Api class so it can use it to call the API.
-            JobApi.token = token;
-            let currentUser = await JobApi.getCurrentUser(username);
-            setCurrentUser(currentUser);
-            setApplicationIds(new Set(currentUser.applications));
-          } catch (err) {
-            console.error("App loadUserInfo: problem loading", err);
-            setCurrentUser(null);
-          }
+    async function getCurrentUser() {
+      if (token) {
+        try {
+          let { username } = jwt.decode(token);
+          // put the token on the Api class so it can use it to call the API.
+          JobApi.token = token;
+          let currentUser = await JobApi.getCurrentUser(username);
+          setCurrentUser(currentUser);
+          setApplicationIds(new Set(currentUser.applications));
+        } catch (err) {
+          console.error("App loadUserInfo: problem loading", err);
+          setCurrentUser(null);
         }
-        setInfoLoaded(true);
       }
+      setInfoLoaded(true);
+    }
 
-      // set infoLoaded to false while async getCurrentUser runs; once the
-      // data is fetched (or even if an error happens!), this will be set back
-      // to false to control the spinner.
-      setInfoLoaded(false);
-      getCurrentUser();
-    },
-    [token]
-  );
+    // set infoLoaded to false while async getCurrentUser runs; once the
+    // data is fetched (or even if an error happens!), this will be set back
+    // to false to control the spinner.
+    setInfoLoaded(false);
+    getCurrentUser();
+  }, [token]);
 
   /** Handles site-wide logout. */
   function logout() {
@@ -128,34 +97,61 @@ function App() {
   /** Apply to a job: make API call and update set of application IDs. */
   function applyToJob(id) {
     if (hasAppliedToJob(id)) return;
-    JoblyApi.applyToJob(currentUser.username, id);
+    JobApi.applyToJob(currentUser.username, id);
     setApplicationIds(new Set([...applicationIds, id]));
   }
 
-  if (!infoLoaded) return <LoadingSpinner />;
+ 
 
   return (
-    <BrowserRouter>
-      <UserContext.Provider
-        value={{ currentUser, setCurrentUser, hasAppliedToJob, applyToJob }}
-      >
-        <div className="App">
-          <Navigation logout={logout} />
-          <Routes login={login} signup={signup} />
-        </div>
-      </UserContext.Provider>
-    </BrowserRouter>
+      <BrowserRouter>
+          <div className="App">
+            <Navigation logout={logout} />
+            <Routes login={login} signup={signup} />
+          </div>
+
+      </BrowserRouter>
   );
 }
 
-import { JobSearch } from "./JobSearch";
 
-const jobSearch = new JobSearch(
-  "#search-form",
-  ".result-container",
-  ".loading-element"
-);
-jobSearch.setCountryCode();
-jobSearch.configureFormListener();
+    // const jobSearch = new JobSearch('#search-form', '.result-container', '.loading-element');
+    //  jobSearch.setCountryCode();
+    //  jobSearch.configureFormListener();
+    //  useEffect(() => {
+    //      //Tests endpoint.
+    //      fetch("http://localhost:4500/api/getJobs?country=fr", {
+    // //        method: "GET",
+    // // //       mode: "cors",
+    // // //       credentials: "same-origin",
+    // // //       headers: {
+    // // //         "Content-Type": "application/json",
+    // // //         "Access-Control-Allow-Origin": "*",
+    // // //       },
+    // // //       type: "application/json",
+    // // //     })
+    // // //       .then((response) => response.json())
+    // // //       .then((responseJSON) => console.log("RESPONSE:", responseJSON.jobs))
+    // // //       .catch((error) => console.log("ERROR:", error));
+    // // //   }, []);
+    // // //   return (
+    // // //     <div className="App">
+    // // //       <header className="App-header">
+    // // //         <img src={logo} className="App-logo" alt="logo" />
+    // // //         <p>
+    // // //           Edit <code>src/App.js</code> and save to reload.
+    // // //         </p>
+    // // //         <a
+    // // //           className="App-link"
+    // // //           href="https://reactjs.org"
+    // // //           target="_blank"
+    // // //           rel="noopener noreferrer"
+    // // //         >
+    // // //           Learn React
+    // // //         </a>
+    // // //       </header>
+    // // //     </div>
+    // // //   );
+    // //  }
 
 export default App;

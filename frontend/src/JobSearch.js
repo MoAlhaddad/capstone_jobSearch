@@ -1,53 +1,55 @@
-import { response } from 'express';
-import { getCurrencySymbol, extractFormData } from './utils';
+import { jobTemplate } from './templates';
+import { extractFormData, getCurrencySymbol } from './utils';
 
 
-class JobApi {
-    constructor(
-        searchFormSelector,
-        resultsContainerSelector,
-        loadingElementSelector,
-    ) {
-        this.searchForm = document.querySelector(searchFormSelector);
-        this.resultsContainer = document.querySelector(resultsContainerSelector);
-        this.loadingElementSelector = document.querySelector(loadingElementSelector);
+export class JobSearch {
 
-    }
+  constructor(searchFormSelector, resultsContainerSelector, loadingElementSelector) {
+    this.searchForm = document.querySelector(searchFormSelector);
+    this.resultsContainer = document.querySelector(resultsContainerSelector);
+    this.loadingElement = document.querySelector(loadingElementSelector);
+  }
 
-    setCountryCode() {
-        this.countryCode = 'gb';
-        this.setCurrencyCode();
+  setCountryCode() {
+    this.countryCode = 'gb';
+    this.setCurrencySymbol();
 
-        fetch('http://ip-api.com/json')
-            .then(results => results.json())
-            .then(results => {
-                 this.CountryCode = results.countryCode.toLowerCase();
-                 this.setCurrencySymbol();
-            });
-    }
+    fetch('http://ip-api.com/json')
+      .then(results => results.json())
+      .then(results => {
+        this.countryCode = results.countryCode.toLowerCase();
+        this.setCurrencySymbol();
+      });
+  }
 
-    setCurrencyCode() {
-        this.currencySymbol = getCurrencySymbol(this.countryCode);
-    }
+  setCurrencySymbol() {
+    this.currencySymbol = getCurrencySymbol(this.countryCode);
+  }
 
-    configureFormListener() {
+  configureFormListener() {
+    this.searchForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    this.startLoading();
+    this.resultsContainer.innerHTML = '';
+    const { search, location } = extractFormData(this.searchForm);
+    fetch(`http://localhost:4500/?search=${search}&location=${location}&country=${this.countryCode}`)
+      .then(response => response.json())
+      .then(({ results }) => {
+        this.stopLoading();
+        return results
+          .map(job => jobTemplate(job, this.currencySymbol))
+          .join('');
+      })
+      .then(jobs => this.resultsContainer.innerHTML = jobs)
+      .catch(() => this.stopLoading());
+    });
+  }
 
-        this.searchForm.addEventListener('submit', (event) => {
-            event.prevenetDefault();
-            this.resultsContainer.innerHTML = '';
-            const { search, location } = extractFormData(this.searchForm);
+  startLoading() {
+    this.loadingElement.classList.add('loading');
+  }
 
-            fetch(`http://localhost:3000/?search=${search}&location=${location}&country=${this.countryCode}`)
-                .then(response => response.json())
-                .then(({ results }) => {
-                    return results
-                        .map(job => jobTemplate(job, this.currencySymbol))
-                        .join('');
-                })
-        })
-    }
-
-
-
-
+  stopLoading() {
+    this.loadingElement.classList.remove('loading');
+  }
 }

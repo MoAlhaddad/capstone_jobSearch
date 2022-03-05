@@ -1,13 +1,13 @@
-export const getCurrencySymbol = countryCode => {
+export const extractFormData = form => Array
+    .from(form.elements)
+    .reduce((acc, { id, value }) => ({ [id]: value, ...acc }), {});
+
+export const getCurrencySymbol = country => {
     const currencies = {
-        gb: '€',
+        gb: '£',
         us: '$',
         au: '$',
         ca: '$',
     };
-    return currencies[countryCode];
-};
-
-export const extractFormData = form => Array
-        .from(form.elements)
-        .reduce((acc, { id, value }) => ({ ...acc, [id]: value }), {});
+    return currencies[country];
+}

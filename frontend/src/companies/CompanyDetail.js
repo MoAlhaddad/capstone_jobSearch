@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import JobApi from "../api/jobapi";
+import JobApi from "../api/api";
 import JobCardList from "../jobs/JobCardList";
 import LoadingSpinner from "../common/LoadingSpinner";
 

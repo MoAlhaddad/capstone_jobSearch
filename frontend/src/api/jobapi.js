@@ -1,7 +1,6 @@
 import axios from "axios";
-import * as ajaxCallCreators from './ajaxCallCreators';
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:4500";
+const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 /** API Class.
  *
@@ -10,15 +9,9 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:4500";
  * be any API-aware stuff elsewhere in the frontend.
  *
  */
-export default class JobApi {
+
+class JobApi {
   // the token for interactive with the API will be stored here.
-  static getJobs(country) {
-    return ajaxCallCreators.get(`/api/getJobs?country=${country}`)
-      .then(result => result)
-      .catch(err => err);
-  }
-
-
   static token;
 
   static async request(endpoint, data = {}, method = "get") {
@@ -42,7 +35,6 @@ export default class JobApi {
   // Individual API routes
 
   /** Get the current user. */
-
 
   static async getCurrentUser(username) {
     let res = await this.request(`users/${username}`);
