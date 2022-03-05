@@ -8,6 +8,8 @@ const config = require("./config");
 const { appendFile } = require("fs");
 const job_controller = require("./controllers/job_controller");
 
+const jwt = require('jsonwebtoken');
+
 
 const headers = {
   "Content-type": "application/json",
