@@ -8,8 +8,7 @@ const config = require("./config");
 const { appendFile } = require("fs");
 const job_controller = require("./controllers/job_controller");
 
-const jwt = require('jsonwebtoken');
-
+const jwt = require("jsonwebtoken");
 
 const headers = {
   "Content-type": "application/json",
@@ -23,8 +22,6 @@ const decodeParams = (searchParams) =>
     (acc, key) => ({ ...acc, [key]: searchParams.get(key) }),
     {}
   );
-
-
 
 app.use(express.static(`${__dirname}/../build`));
 app.use(express.urlencoded());
@@ -82,93 +79,6 @@ const targetURL = `https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=d4ab512
       utils.errorMessage(error);
     });
 }
-
-const password = req.body.password;
-
-bcrypt.hash(password, saltRounds, (err, hash) => {
-  if (err) {
-    console.log(err);
-  }
-db.query(
-  "INSERT INTO users (username, password) VALUES (?,?)",
-  [username, hash],
-  (err, result) => {
-    console.log(err);
-  }
-);
-
-});
-
-
-
-const verifyJWT = (req, res, next) => {
-  const token = req.headers("x-access-token") 
-
-  if (!token) {
-    res.send("We need a token, please give it next try!")
-  } else {
-    jwt.verify(token, "jwtsecret", (err, decoded) => {
-        if (err) {
-          res.json({auth: false, message: "Failed Authentication"});
-        } else {
-          req.userId = decoded.id;
-          next();
-        }
-    });
-  }
-};
-
-app.get('isUserAuth', verifyJWT, (req, res) => {
-  res.send("You are auntenticated") 
-})
-
-
-
-
-app.get("/login", (req, res) => {
-  if (req.session.user) {
-    res.send({ loggedIn: true, user: req.session.user });
-  } else {
-    res.send({ loggedIn: false });
-  }
-});
-
-
-app.post("/login", (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
- 
-  db.query(
-    "SELECT * FROM users WHERE * username = ?;",
-    username,
-    (err, result) => {
-      if (err) {
-        res.send({ err: err });
-      }
-
-      if (result.length > 0) {
-        bcrypt.compare(password, result[0].password, (error, response) => {
-          if (response) {
-            const id = result[0].id
-            const token = jwt.sign({id}, "jwtSecret", {
-              expiresIn: 300,
-            })
-            req.session.user = result
-
-            req.session.user = result;
-            
-            res.json({auth: true, token: token, result: result});
-
-          } else {
-            res.send({ message: "Wrong username/password combination!" });
-          }
-        });
-      } else {
-        res.send({ message: "User doesn't exist" });
-      }
-    }
-  );
-});
 
 app.get("/api/getJobs", job_controller.getJobs);
 
